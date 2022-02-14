@@ -1,13 +1,15 @@
-import Button from "@mui/material/Button";
-
 const Main = () => {
   return (
-    <div>
-      <Button variant="contained" color="secondary">
-        Add notes
-      </Button>
+    <div className="app-main">
+      <div className="app-main-note-edit">
+        <input type="text" id="title" autofocus />
+        <textarea id="body" placeholder="write your note here ..." />
+      </div>
+      <div className="app-main-note-preview"></div>
     </div>
   );
 };
 
 export default Main;
+
+// atuofocus automatically focus on this element
