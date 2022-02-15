@@ -5,7 +5,10 @@ const Main = () => {
         <input type="text" id="title" autofocus />
         <textarea id="body" placeholder="write your note here ..." />
       </div>
-      <div className="app-main-note-preview"></div>
+      <div className="app-main-note-preview">
+        <h1 className="preview-title">TITLE</h1>
+        <div className="markdown-preview">Note Preview</div>
+      </div>
     </div>
   );
 };
