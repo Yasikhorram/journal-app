@@ -1,4 +1,4 @@
-const Sidebar = ({ notes, onAddNote }) => {
+const Sidebar = ({ notes, onAddNote, onDeleteNote }) => {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
@@ -10,11 +10,12 @@ const Sidebar = ({ notes, onAddNote }) => {
           <div className="app-sidebar-note">
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
-              <button>Delete</button>
+              <button onClick={() => onDeleteNote(note.id)}>Delete</button>
             </div>
             <p> {note.body && note.body.substr(0, 100) + "..."} </p>
             <small className="note-meta">
-              Last Modified [{new Date().toLocaleDateString()}]
+              Last Modified [{new Date().toLocaleDateString()}{" "}
+              {new Date().toLocaleTimeString()}]
             </small>
           </div>
         ))}
