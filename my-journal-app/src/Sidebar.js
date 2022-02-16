@@ -1,4 +1,10 @@
-const Sidebar = ({ notes, onAddNote, onDeleteNote }) => {
+const Sidebar = ({
+  notes,
+  onAddNote,
+  onDeleteNote,
+  activeNote,
+  setActiveNote,
+}) => {
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
@@ -7,7 +13,10 @@ const Sidebar = ({ notes, onAddNote, onDeleteNote }) => {
       </div>
       <div className="app-sidebar-notes">
         {notes.map((note) => (
-          <div className="app-sidebar-note">
+          <div
+            className={`app-sidebar-note ${note.id === activeNote && `active`}`}
+            onClick={() => setActiveNote(note.id)}
+          >
             <div className="sidebar-note-title">
               <strong>{note.title}</strong>
               <button onClick={() => onDeleteNote(note.id)}>Delete</button>
@@ -32,3 +41,5 @@ export default Sidebar;
 //rendering. So if theres a note.body do this othrwise do nothin and we write it with
 //&& <p> {note.body && note.body.substr(0, 100) + "..."} </p>
 // -> note.lastModified to make this readable we use new Date()
+// remember when we call a func with an argument we should write it in an arrow func to not to automatically get called
+// -> for dynamic class name which we can static and non static classes using this technic
