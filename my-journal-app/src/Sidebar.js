@@ -43,3 +43,4 @@ export default Sidebar;
 // -> note.lastModified to make this readable we use new Date()
 // remember when we call a func with an argument we should write it in an arrow func to not to automatically get called
 // -> for dynamic class name which we can static and non static classes using this technic
+//className={`app-sidebar-note ${note.id === activeNote && `active`}`}
