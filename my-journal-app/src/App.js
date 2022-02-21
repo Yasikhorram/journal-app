@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import uuid from "react-uuid";
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState(JSON.parse(localStorage.notes) || []);
   const [activeNote, setActiveNote] = useState(false);
 
   useEffect(() => {
@@ -58,10 +58,18 @@ function App() {
 
 export default App;
 
-// -> we want to pass current active note to Main but cant send it like <Main activeNote={activeNote} /> because activeNote is just an id
+// --> we want to pass current active note to Main but cant send it like <Main activeNote={activeNote} /> because activeNote is just an id
 //find() method return the first value which match from the
 //collection and terminate so rest of the array is not process.
 // getActiveNote() so we want it to run auto to always pass in the //active note => main component has access to the active current note
 //activeNote={getActiveNote()}
 
 // --> ** Making in our notes persist in local storage and not disappear by refreshing the page. for that we use Local storage. It is storage part of the browser where we can store key value pairs. So theres a big obj in browser storage. So we can save all our notes in the arr by turning them into str using JSON.stringify.
+
+// --> Retriving from localStorage.
+// We do it by using localStorage as a default state for our notes.
+// localStorage.notes which notes is the reference we gave as an argument to setItem
+// And we have to parse the localStorage by
+// const [notes, setNotes] = useState(JSON.parse(localStorage.notes))
+// Note that this will err out if we are using the fresh browser because theres nothing there if its the first time using it
+// So we need to conditional rendering that if this returns false alternative value is [] and we do this by ||
