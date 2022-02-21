@@ -5,6 +5,7 @@ const Sidebar = ({
   activeNote,
   setActiveNote,
 }) => {
+  const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
   return (
     <div className="app-sidebar">
       <div className="app-sidebar-header">
@@ -12,7 +13,7 @@ const Sidebar = ({
         <button onClick={onAddNote}>Add</button>
       </div>
       <div className="app-sidebar-notes">
-        {notes.map((note) => (
+        {sortedNotes.map((note) => (
           <div
             className={`app-sidebar-note ${note.id === activeNote && `active`}`}
             onClick={() => setActiveNote(note.id)}
@@ -44,3 +45,5 @@ export default Sidebar;
 // remember when we call a func with an argument we should write it in an arrow func to not to automatically get called
 // -> for dynamic class name which we can static and non static classes using this technic
 //className={`app-sidebar-note ${note.id === activeNote && `active`}`}
+// --> We want to slide up our note as soon as we update it. So recent updated notes moves up and
+// I did it by modifying our notes arr via sort function
