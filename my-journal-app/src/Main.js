@@ -1,4 +1,5 @@
 import { Note } from "@mui/icons-material";
+import ReactMarkDown from "react-markdown";
 
 const Main = ({ activeNote, onUpdateNote }) => {
   const onEditField = (key, value) => {
@@ -30,7 +31,9 @@ const Main = ({ activeNote, onUpdateNote }) => {
       </div>
       <div className="app-main-note-preview">
         <h1 className="preview-title"> {activeNote.title} </h1>
-        <div className="markdown-preview"> {activeNote.body} </div>
+        <ReactMarkDown className="markdown-preview">
+          {activeNote.body}
+        </ReactMarkDown>
       </div>
     </div>
   );
