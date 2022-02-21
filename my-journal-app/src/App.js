@@ -1,12 +1,16 @@
 import "./App.css";
 import Sidebar from "./Sidebar";
 import Main from "./Main";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import uuid from "react-uuid";
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [activeNote, setActiveNote] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("notes", JSON.stringify(notes));
+  }, [notes]);
 
   const onAddNote = () => {
     const newNote = {
@@ -59,3 +63,5 @@ export default App;
 //collection and terminate so rest of the array is not process.
 // getActiveNote() so we want it to run auto to always pass in the //active note => main component has access to the active current note
 //activeNote={getActiveNote()}
+
+// --> ** Making in our notes persist in local storage and not disappear by refreshing the page. for that we use Local storage. It is storage part of the browser where we can store key value pairs. So theres a big obj in browser storage. So we can save all our notes in the arr by turning them into str using JSON.stringify.
