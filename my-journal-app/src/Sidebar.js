@@ -47,3 +47,4 @@ export default Sidebar;
 //className={`app-sidebar-note ${note.id === activeNote && `active`}`}
 // --> We want to slide up our note as soon as we update it. So recent updated notes moves up and
 // I did it by modifying our notes arr via sort function
+//   const sortedNotes = notes.sort((a, b) => b.lastModified - a.lastModified);
